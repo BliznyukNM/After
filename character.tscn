@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://tai7ooo6fidw"]
+
+[ext_resource type="SpriteFrames" uid="uid://c6sdf6jg0dqov" path="res://assets/character/character.tres" id="1_i4flp"]
+[ext_resource type="Script" path="res://character.gd" id="1_l3ub1"]
+[ext_resource type="SpriteFrames" uid="uid://bpgoyj0tuqpyi" path="res://assets/character/front_arm.tres" id="2_vuj8s"]
+[ext_resource type="SpriteFrames" uid="uid://4pgq73oekcbx" path="res://assets/character/back_arm.tres" id="3_1vtqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtsy7"]
+size = Vector2(33, 94)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_l3ub1")
+speed = 150.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 11)
+shape = SubResource("RectangleShape2D_vtsy7")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Body" type="AnimatedSprite2D" parent="Visual"]
+scale = Vector2(2.255, 2)
+sprite_frames = ExtResource("1_i4flp")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.500419
+
+[node name="Arms" type="Node2D" parent="Visual"]
+position = Vector2(-4, -3)
+rotation = 0.321163
+
+[node name="FrontArm" type="AnimatedSprite2D" parent="Visual/Arms"]
+position = Vector2(4, 3)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_vuj8s")
+animation = &"shoot"
+frame = 5
+frame_progress = 1.0
+
+[node name="BackArm" type="AnimatedSprite2D" parent="Visual/Arms"]
+position = Vector2(4, 3)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_1vtqs")
+animation = &"idle"
