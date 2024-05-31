@@ -15,3 +15,9 @@ func _process(_delta: float) -> void:
     else:
         $Visual/Body.play("idle")
     
+    var entrance = $EntranceDetector.entrance
+    if entrance:
+        if entrance.direction > 0 and Input.is_action_just_pressed("character.up") or \
+                entrance.direction < 0 and Input.is_action_just_pressed("character.down"):
+            entrance.enter(self)
+    

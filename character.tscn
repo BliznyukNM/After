@@ -1,19 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://tai7ooo6fidw"]
+[gd_scene load_steps=8 format=3 uid="uid://tai7ooo6fidw"]
 
 [ext_resource type="SpriteFrames" uid="uid://c6sdf6jg0dqov" path="res://assets/character/character.tres" id="1_i4flp"]
 [ext_resource type="Script" path="res://character.gd" id="1_l3ub1"]
 [ext_resource type="SpriteFrames" uid="uid://bpgoyj0tuqpyi" path="res://assets/character/front_arm.tres" id="2_vuj8s"]
 [ext_resource type="SpriteFrames" uid="uid://4pgq73oekcbx" path="res://assets/character/back_arm.tres" id="3_1vtqs"]
+[ext_resource type="Script" path="res://entrance_detector.gd" id="5_ekx8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtsy7"]
-size = Vector2(33, 94)
+size = Vector2(33, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnyb6"]
+size = Vector2(34, 20)
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_l3ub1")
 speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -47)
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_vtsy7")
 
 [node name="Visual" type="Node2D" parent="."]
@@ -43,3 +47,14 @@ position = Vector2(4, 3)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_1vtqs")
 animation = &"idle"
+
+[node name="EntranceDetector" type="Area2D" parent="."]
+script = ExtResource("5_ekx8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceDetector"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_qnyb6")
+debug_color = Color(0.81064, 0.370788, 0.476591, 0.42)
+
+[connection signal="area_entered" from="EntranceDetector" to="EntranceDetector" method="_on_entrance_detected"]
+[connection signal="area_exited" from="EntranceDetector" to="EntranceDetector" method="_on_entrance_lost"]
