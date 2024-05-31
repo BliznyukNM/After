@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvfbv5lspa2p2"]
+
+[ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_6p8v2"]
+[ext_resource type="Texture2D" uid="uid://d0ja2dr3bi0go" path="res://props/trash_front.tres" id="2_om873"]
+
+[node name="Building1" type="Node2D"]
+
+[node name="Floor1" type="TileMap" parent="."]
+tile_set = ExtResource("1_6p8v2")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(-10, 3, 7, -8, 131075, 5, -6, 3, 5, -4, 131075, 5, -2, 3, 5, -65536, 131075, 5, -65534, 131075, 7, -65532, 131075, 7, -65530, 3, 7, -65528, 3, 5)
+layer_1/name = "InternalWalls"
+layer_1/modulate = Color(0.63, 0.63, 0.63, 1)
+layer_1/tile_data = PackedInt32Array(-131083, 131072, 0, -65547, 131072, 0, -11, 131072, 0, -131082, 196608, 0, -131080, 196608, 0, -131078, 196608, 0, -131076, 851968, 0, -131074, 196608, 0, -196608, 196608, 0, -196606, 1245184, 0, -196604, 196608, 0, -196602, 196608, 0, -196600, 327680, 0, -196599, 1441792, 0, -131063, 131072, 0, -65527, 131072, 0)
+layer_2/name = "Props"
+layer_2/modulate = Color(0.631373, 0.631373, 0.631373, 1)
+layer_2/tile_data = PackedInt32Array(-65537, 2949121, 0)
+layer_3/name = "External Walls"
+layer_3/tile_data = PackedInt32Array(-10, 0, 4, -9, 196608, 4, -7, 2031616, 0, -5, 458752, 4, -65535, 1114112, 4, -65533, 393216, 4, -65532, 327680, 4, -65531, 196608, 4, -65529, 1245184, 4, -65527, 1441792, 4)
+layer_4/name = "Roofs"
+layer_4/tile_data = PackedInt32Array(-327691, 1441794, 7, -262155, 1507330, 3, -327690, 1310722, 2, -262154, 1310722, 3, -327689, 1310722, 2, -262153, 1441794, 3, -327688, 1441794, 2, -262152, 1376258, 3, -327687, 1507330, 2, -262151, 1441794, 3, -262150, 1376258, 3, -393215, 1507330, 2, -327679, 1310722, 3, -393214, 1376258, 2, -327678, 1376258, 3, -393213, 1507330, 2, -327677, 1310722, 3, -393212, 1376258, 2, -327676, 1441794, 3, -393211, 1376258, 7, -327675, 1507330, 3, -393210, 1507330, 7, -327674, 1507330, 3, -393209, 1441794, 7, -327673, 1441794, 3, -327672, 1507330, 3, -327671, 1310722, 3)
+
+[node name="TrashFront" type="Sprite2D" parent="Floor1"]
+position = Vector2(-32, 0)
+texture = ExtResource("2_om873")
