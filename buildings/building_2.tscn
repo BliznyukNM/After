@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwf1pr7d17mud"]
+[gd_scene load_steps=9 format=4 uid="uid://cwf1pr7d17mud"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_mpoi3"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_oqf73"]
 [ext_resource type="Texture2D" uid="uid://lfflqgiaqjld" path="res://props/trash_left.tres" id="2_evwq2"]
 [ext_resource type="Script" path="res://buildings/entrance.gd" id="3_axw3e"]
-[ext_resource type="Script" path="res://buildings/floor.gd" id="3_yuo04"]
+[ext_resource type="Script" path="res://buildings/layer.gd" id="3_yuo04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ais5e"]
 size = Vector2(64, 24)
@@ -20,26 +20,43 @@ script = ExtResource("1_oqf73")
 
 [node name="Floors" type="Node2D" parent="."]
 
-[node name="GroundFloor" type="TileMap" parent="Floors"]
+[node name="GroundFloor" type="Node2D" parent="Floors"]
 y_sort_enabled = true
+
+[node name="Floor" type="TileMapLayer" parent="Floors/GroundFloor"]
+z_index = -2
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD+////AwAAAAcAAAAAAP//AwAAAAUAAAACAP//AwAAAAcAAAD8////AwAAAAcAAAA=")
 tile_set = ExtResource("1_mpoi3")
-format = 2
-layer_0/name = "Floor"
-layer_0/y_sort_enabled = true
-layer_0/z_index = -2
-layer_0/tile_data = PackedInt32Array(-2, 3, 7, -65536, 3, 5, -65534, 3, 7, -4, 3, 7)
-layer_1/name = "InternalWalls"
-layer_1/modulate = Color(0.63, 0.63, 0.63, 1)
-layer_1/y_sort_enabled = true
-layer_1/z_index = -1
-layer_1/tile_data = PackedInt32Array(-131076, 196608, 0, -196606, 196608, 0, -196608, 851968, 0, -131074, 196608, 0, -131077, 131072, 0, -196604, 1376256, 0, -131068, 1376256, 0, -65541, 131072, 0, -5, 131072, 0, -65532, 1376256, 0)
-layer_2/name = "Props"
-layer_2/y_sort_enabled = true
-layer_2/z_index = -1
-layer_2/tile_data = PackedInt32Array(-65537, 917509, 9)
-layer_3/name = "External Walls"
-layer_3/tile_data = PackedInt32Array(-5, 131072, 4, -4, 851968, 4, -2, 196608, 4, -65532, 1376256, 4, -65534, 2162688, 0, -65536, 196608, 0)
-layer_4/name = "Roofs"
+script = ExtResource("3_yuo04")
+
+[node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
+modulate = Color(0.63, 0.63, 0.63, 1)
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD8//3/AAADAAAAAAACAP3/AAADAAAAAAAAAP3/AAANAAAAAAD+//3/AAADAAAAAAD7//3/AAACAAAAAAAEAP3/AAAVAAAAAAAEAP7/AAAVAAAAAAD7//7/AAACAAAAAAD7////AAACAAAAAAAEAP//AAAVAAAAAAA=")
+tile_set = ExtResource("1_mpoi3")
+script = ExtResource("3_yuo04")
+
+[node name="Props" type="TileMapLayer" parent="Floors/GroundFloor"]
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD///7/BQAOAAkAAAA=")
+tile_set = ExtResource("1_mpoi3")
+script = ExtResource("3_yuo04")
+
+[node name="ExternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD7////AAACAAQAAAD8////AAANAAQAAAD+////AAADAAQAAAAEAP//AAAVAAQAAAACAP//AAAhAAAAAAAAAP//AAADAAAAAAA=")
+tile_set = ExtResource("1_mpoi3")
+script = ExtResource("3_yuo04")
+
+[node name="Roof" type="TileMapLayer" parent="Floors/GroundFloor"]
+use_parent_material = true
+tile_set = ExtResource("1_mpoi3")
 script = ExtResource("3_yuo04")
 
 [node name="Exit" type="Area2D" parent="Floors/GroundFloor"]
@@ -67,27 +84,44 @@ shape = SubResource("RectangleShape2D_wobfq")
 [node name="EntrancePoint" type="Node2D" parent="Floors/GroundFloor/Ladder"]
 position = Vector2(-120, -112)
 
-[node name="Floor1" type="TileMap" parent="Floors"]
+[node name="Floor1" type="Node2D" parent="Floors"]
 y_sort_enabled = true
 position = Vector2(0, -114)
+
+[node name="Floor" type="TileMapLayer" parent="Floors/Floor1"]
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD+////AwAAAAUAAAAAAP//AwAAAAUAAAACAP//AwAAAAUAAAD9////BQAOABEAAAD8//7/AwAAAAkAAAD8////AwAAAAoAAAA=")
 tile_set = ExtResource("1_mpoi3")
-format = 2
-layer_0/name = "Floor"
-layer_0/y_sort_enabled = true
-layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(-2, 3, 5, -65536, 3, 5, -65534, 3, 5, -3, 917509, 17, -65540, 3, 9, -4, 3, 10)
-layer_1/name = "InternalWalls"
-layer_1/modulate = Color(0.63, 0.63, 0.63, 1)
-layer_1/y_sort_enabled = true
-layer_1/z_index = -1
-layer_1/tile_data = PackedInt32Array(-131076, 196608, 0, -131074, 851968, 0, -196606, 1245184, 0, -196608, 196608, 0, -196604, 1376256, 0, -131077, 131072, 0, -65541, 131072, 0, -131068, 1376256, 0, -5, 131072, 0)
-layer_2/name = "Props"
-layer_2/y_sort_enabled = true
-layer_2/z_index = -1
-layer_3/name = "External Walls"
-layer_3/tile_data = PackedInt32Array(-4, 983040, 0, -65534, 851968, 0, -2, 196608, 0, -65536, 196608, 0, -5, 2359296, 5, -65532, 2424832, 5)
-layer_4/name = "Roofs"
-layer_4/tile_data = PackedInt32Array(-196613, 1507330, 3, -196610, 1441794, 3, -196609, 1441794, 3, -262144, 1310722, 3, -262143, 1376258, 3, -262142, 1507330, 3, -262141, 1310722, 3, -262140, 1376258, 3, -327685, 1376258, 2, -262149, 1507330, 2, -327684, 1376258, 2, -327683, 1441794, 2, -262147, 1376258, 2, -327682, 1376258, 2, -262146, 1310722, 2, -327681, 1310722, 2, -262145, 1441794, 2, -327680, 1441794, 2, -393216, 1441794, 2, -327679, 1441794, 2, -393215, 1376258, 2, -327678, 1441794, 2, -393214, 1507330, 2, -327677, 1310722, 2, -393213, 1376258, 2, -393212, 1507330, 2, -327676, 1507330, 2)
+script = ExtResource("3_yuo04")
+
+[node name="InternalWalls" type="TileMapLayer" parent="Floors/Floor1"]
+modulate = Color(0.63, 0.63, 0.63, 1)
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD8//3/AAADAAAAAAD+//3/AAANAAAAAAACAP3/AAATAAAAAAAAAP3/AAADAAAAAAAEAP3/AAAVAAAAAAD7//3/AAACAAAAAAD7//7/AAACAAAAAAAEAP7/AAAVAAAAAAD7////AAACAAAAAAA=")
+tile_set = ExtResource("1_mpoi3")
+script = ExtResource("3_yuo04")
+
+[node name="Props" type="TileMapLayer" parent="Floors/Floor1"]
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+tile_set = ExtResource("1_mpoi3")
+script = ExtResource("3_yuo04")
+
+[node name="ExternalWalls" type="TileMapLayer" parent="Floors/Floor1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD8////AAAPAAAAAAACAP//AAANAAAAAAD+////AAADAAAAAAAAAP//AAADAAAAAAD7////AAAkAAUAAAAEAP//AAAlAAUAAAA=")
+tile_set = ExtResource("1_mpoi3")
+script = ExtResource("3_yuo04")
+
+[node name="Roof" type="TileMapLayer" parent="Floors/Floor1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD7//z/AgAXAAMAAAD+//z/AgAWAAMAAAD///z/AgAWAAMAAAAAAPz/AgAUAAMAAAABAPz/AgAVAAMAAAACAPz/AgAXAAMAAAADAPz/AgAUAAMAAAAEAPz/AgAVAAMAAAD7//r/AgAVAAIAAAD7//v/AgAXAAIAAAD8//r/AgAVAAIAAAD9//r/AgAWAAIAAAD9//v/AgAVAAIAAAD+//r/AgAVAAIAAAD+//v/AgAUAAIAAAD///r/AgAUAAIAAAD///v/AgAWAAIAAAAAAPv/AgAWAAIAAAAAAPr/AgAWAAIAAAABAPv/AgAWAAIAAAABAPr/AgAVAAIAAAACAPv/AgAWAAIAAAACAPr/AgAXAAIAAAADAPv/AgAUAAIAAAADAPr/AgAVAAIAAAAEAPr/AgAXAAIAAAAEAPv/AgAXAAIAAAA=")
+tile_set = ExtResource("1_mpoi3")
 script = ExtResource("3_yuo04")
 
 [node name="Ladder" type="Area2D" parent="Floors/Floor1"]

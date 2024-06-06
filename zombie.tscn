@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ohl5x8ebk74x"]
+
+[ext_resource type="Script" path="res://zombie.gd" id="1_1nrgn"]
+[ext_resource type="SpriteFrames" uid="uid://dh8hm4fbwrvdp" path="res://assets/zombie/zombie.tres" id="1_l88b0"]
+[ext_resource type="Script" path="res://hit_box.gd" id="3_pxn8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bsy"]
+size = Vector2(36, 53.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i6io"]
+size = Vector2(36, 11)
+
+[node name="Zombie" type="CharacterBody2D"]
+script = ExtResource("1_1nrgn")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(2.08165e-12, -58)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_l88b0")
+animation = &"die"
+autoplay = "idle"
+
+[node name="HitBox" type="Area2D" parent="Body"]
+script = ExtResource("3_pxn8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitBox"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_r8bsy")
+debug_color = Color(0.7, 0.665, 0, 0.0745098)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_1i6io")

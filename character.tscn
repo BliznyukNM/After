@@ -26,21 +26,19 @@ position = Vector2(0, -58)
 [node name="Body" type="AnimatedSprite2D" parent="Visual"]
 scale = Vector2(2.255, 2)
 sprite_frames = ExtResource("1_i4flp")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.549198
+frame = 4
+frame_progress = 0.912789
 
 [node name="Arms" type="Node2D" parent="Visual"]
 position = Vector2(-4, -3)
-rotation = 0.321163
 
 [node name="FrontArm" type="AnimatedSprite2D" parent="Visual/Arms"]
 position = Vector2(4, 3)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_vuj8s")
-animation = &"shoot"
-frame = 5
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="BackArm" type="AnimatedSprite2D" parent="Visual/Arms"]
 position = Vector2(4, 3)

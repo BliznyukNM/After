@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxj7all62xccf"]
+
+[ext_resource type="Texture2D" uid="uid://b8i5iihqfcysa" path="res://assets/crosshairs/Fire Effect and Bullet 16x16.png" id="1_namqg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t2aj"]
+atlas = ExtResource("1_namqg")
+region = Rect2(384, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrllm"]
+atlas = ExtResource("1_namqg")
+region = Rect2(400, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im33v"]
+atlas = ExtResource("1_namqg")
+region = Rect2(416, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2alo"]
+atlas = ExtResource("1_namqg")
+region = Rect2(432, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rphh0"]
+atlas = ExtResource("1_namqg")
+region = Rect2(448, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kv4d"]
+atlas = ExtResource("1_namqg")
+region = Rect2(368, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aio21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t2aj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrllm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im33v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2alo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rphh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kv4d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_3i784"]
+resource_name = "flare"
+script/source = "extends AnimatedSprite2D
+
+
+func _ready() -> void:
+    animation_finished.connect(func(): queue_free())
+"
+
+[node name="Flare" type="AnimatedSprite2D"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-751, -495)
+sprite_frames = SubResource("SpriteFrames_aio21")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+script = SubResource("GDScript_3i784")
