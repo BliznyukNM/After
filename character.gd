@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
     move_and_slide()
     
     var entrance = $EntranceDetector.entrance
-    if entrance:
+    if entrance and "direction" in entrance:
         if entrance.direction > 0 and Input.is_action_just_pressed("character.up") or \
                 entrance.direction < 0 and Input.is_action_just_pressed("character.down"):
             entrance.enter(self)
@@ -34,13 +34,13 @@ func _process(_delta: float) -> void:
         flare.global_position = $Crosshair.global_position
         owner.add_child(flare)
         
-        shoot()
+        shoot($Crosshair.global_position)
         
 
-func shoot() -> void:
+func shoot(mouse_position: Vector2) -> void:
     var space_state: = get_world_2d().direct_space_state
     var query: = PhysicsPointQueryParameters2D.new()
-    query.position = get_global_mouse_position()
+    query.position = mouse_position
     query.collide_with_areas = true
     query.collide_with_bodies = true
     var result: = space_state.intersect_point(query)

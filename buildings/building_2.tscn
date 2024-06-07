@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://cwf1pr7d17mud"]
+[gd_scene load_steps=10 format=4 uid="uid://cwf1pr7d17mud"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_mpoi3"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_oqf73"]
 [ext_resource type="Texture2D" uid="uid://lfflqgiaqjld" path="res://props/trash_left.tres" id="2_evwq2"]
 [ext_resource type="Script" path="res://buildings/entrance.gd" id="3_axw3e"]
 [ext_resource type="Script" path="res://buildings/layer.gd" id="3_yuo04"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1pi73"]
+size = Vector2(270, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ais5e"]
 size = Vector2(64, 24)
@@ -21,6 +24,7 @@ script = ExtResource("1_oqf73")
 [node name="Floors" type="Node2D" parent="."]
 
 [node name="GroundFloor" type="Node2D" parent="Floors"]
+clip_children = 1
 y_sort_enabled = true
 
 [node name="Floor" type="TileMapLayer" parent="Floors/GroundFloor"]
@@ -29,7 +33,13 @@ y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD+////AwAAAAcAAAAAAP//AwAAAAUAAAACAP//AwAAAAcAAAD8////AwAAAAcAAAA=")
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
+
+[node name="Spawn" type="Sprite2D" parent="Floors/GroundFloor"]
+clip_children = 1
+texture = SubResource("PlaceholderTexture2D_1pi73")
+offset = Vector2(2.08165e-12, -102)
 
 [node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
 modulate = Color(0.63, 0.63, 0.63, 1)
@@ -38,6 +48,7 @@ y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD8//3/AAADAAAAAAACAP3/AAADAAAAAAAAAP3/AAANAAAAAAD+//3/AAADAAAAAAD7//3/AAACAAAAAAAEAP3/AAAVAAAAAAAEAP7/AAAVAAAAAAD7//7/AAACAAAAAAD7////AAACAAAAAAAEAP//AAAVAAAAAAA=")
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
 
 [node name="Props" type="TileMapLayer" parent="Floors/GroundFloor"]
@@ -46,17 +57,19 @@ y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD///7/BQAOAAkAAAA=")
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
 
 [node name="ExternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD7////AAACAAQAAAD8////AAANAAQAAAD+////AAADAAQAAAAEAP//AAAVAAQAAAACAP//AAAhAAAAAAAAAP//AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAD7////AAACAAQAAAD8////AAANAAQAAAD+////AAADAAQAAAAEAP//AAAVAAQAAAACAP//AAAhAAAAAAAAAP//AAADAAQAAAA=")
 tile_set = ExtResource("1_mpoi3")
 script = ExtResource("3_yuo04")
 
 [node name="Roof" type="TileMapLayer" parent="Floors/GroundFloor"]
 use_parent_material = true
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
 
 [node name="Exit" type="Area2D" parent="Floors/GroundFloor"]
@@ -92,17 +105,23 @@ position = Vector2(0, -114)
 z_index = -1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD+////AwAAAAUAAAAAAP//AwAAAAUAAAACAP//AwAAAAUAAAD9////BQAOABEAAAD8//7/AwAAAAkAAAD8////AwAAAAoAAAA=")
+tile_map_data = PackedByteArray("AAD+////AwAAAAUAAAAAAP//AwAAAAUAAAACAP//AwAAAAUAAAD9////BQAOABEAAAD8//7/AwAAAAkAAAD8////AwAAAAoAAAAEAP7/AAAVAAAAAAAEAP//AAAVAAAAAAD7//7/AAACAAAAAAD7////AAACAAAAAAA=")
 tile_set = ExtResource("1_mpoi3")
 script = ExtResource("3_yuo04")
+
+[node name="Spawn" type="Sprite2D" parent="Floors/Floor1"]
+clip_children = 1
+texture = SubResource("PlaceholderTexture2D_1pi73")
+offset = Vector2(2.08165e-12, -102)
 
 [node name="InternalWalls" type="TileMapLayer" parent="Floors/Floor1"]
 modulate = Color(0.63, 0.63, 0.63, 1)
 z_index = -1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD8//3/AAADAAAAAAD+//3/AAANAAAAAAACAP3/AAATAAAAAAAAAP3/AAADAAAAAAAEAP3/AAAVAAAAAAD7//3/AAACAAAAAAD7//7/AAACAAAAAAAEAP7/AAAVAAAAAAD7////AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//3/AAADAAAAAAD+//3/AAANAAAAAAACAP3/AAATAAAAAAAAAP3/AAADAAAAAAD7//3/AAACAAAAAAAEAP3/AAAVAAAAAAA=")
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
 
 [node name="Props" type="TileMapLayer" parent="Floors/Floor1"]
@@ -110,6 +129,7 @@ z_index = -1
 y_sort_enabled = true
 use_parent_material = true
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
 
 [node name="ExternalWalls" type="TileMapLayer" parent="Floors/Floor1"]
@@ -122,6 +142,7 @@ script = ExtResource("3_yuo04")
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD7//z/AgAXAAMAAAD+//z/AgAWAAMAAAD///z/AgAWAAMAAAAAAPz/AgAUAAMAAAABAPz/AgAVAAMAAAACAPz/AgAXAAMAAAADAPz/AgAUAAMAAAAEAPz/AgAVAAMAAAD7//r/AgAVAAIAAAD7//v/AgAXAAIAAAD8//r/AgAVAAIAAAD9//r/AgAWAAIAAAD9//v/AgAVAAIAAAD+//r/AgAVAAIAAAD+//v/AgAUAAIAAAD///r/AgAUAAIAAAD///v/AgAWAAIAAAAAAPv/AgAWAAIAAAAAAPr/AgAWAAIAAAABAPv/AgAWAAIAAAABAPr/AgAVAAIAAAACAPv/AgAWAAIAAAACAPr/AgAXAAIAAAADAPv/AgAUAAIAAAADAPr/AgAVAAIAAAAEAPr/AgAXAAIAAAAEAPv/AgAXAAIAAAA=")
 tile_set = ExtResource("1_mpoi3")
+collision_enabled = false
 script = ExtResource("3_yuo04")
 
 [node name="Ladder" type="Area2D" parent="Floors/Floor1"]
