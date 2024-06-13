@@ -74,6 +74,8 @@ script = ExtResource("3_yuo04")
 
 [node name="Exit" type="Area2D" parent="Floors/GroundFloor"]
 position = Vector2(96, 32)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = -1
 
@@ -86,6 +88,8 @@ position = Vector2(0, 24)
 
 [node name="Ladder" type="Area2D" parent="Floors/GroundFloor"]
 position = Vector2(8, -24)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = 1
 floor_id = 1
@@ -147,6 +151,8 @@ script = ExtResource("3_yuo04")
 
 [node name="Ladder" type="Area2D" parent="Floors/Floor1"]
 position = Vector2(-104, -22)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = -1
 floor_id = 0
@@ -164,6 +170,8 @@ texture = ExtResource("2_evwq2")
 
 [node name="Entrance" type="Area2D" parent="."]
 position = Vector2(96, 32)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = 1
 floor_id = 0
@@ -174,11 +182,5 @@ shape = SubResource("RectangleShape2D_1jfih")
 [node name="EntrancePoint" type="Node2D" parent="Entrance"]
 position = Vector2(0, -48)
 
-[connection signal="body_entered" from="Floors/GroundFloor/Exit" to="Floors/GroundFloor/Exit" method="_on_body_entered"]
-[connection signal="body_exited" from="Floors/GroundFloor/Exit" to="Floors/GroundFloor/Exit" method="_on_body_exited"]
-[connection signal="body_entered" from="Floors/GroundFloor/Ladder" to="Floors/GroundFloor/Ladder" method="_on_body_entered"]
-[connection signal="body_exited" from="Floors/GroundFloor/Ladder" to="Floors/GroundFloor/Ladder" method="_on_body_exited"]
-[connection signal="body_entered" from="Floors/Floor1/Ladder" to="Floors/Floor1/Ladder" method="_on_body_entered"]
-[connection signal="body_exited" from="Floors/Floor1/Ladder" to="Floors/Floor1/Ladder" method="_on_body_exited"]
 [connection signal="body_entered" from="Entrance" to="Entrance" method="_on_body_entered"]
 [connection signal="body_exited" from="Entrance" to="Entrance" method="_on_body_exited"]

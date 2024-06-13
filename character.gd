@@ -27,8 +27,8 @@ func _process(_delta: float) -> void:
             entrance.enter(self)
     
     if Input.is_action_just_pressed("character.shoot"):
-        $Visual/Arms/BackArm.play("shoot")
-        $Visual/Arms/FrontArm.play("shoot")
+        #$Visual/Arms/BackArm.play("shoot")
+        #$Visual/Arms/FrontArm.play("shoot")
         
         var flare: Node2D = load("res://assets/crosshairs/flare.tscn").instantiate()
         flare.global_position = $Crosshair.global_position
@@ -50,12 +50,8 @@ func shoot(mouse_position: Vector2) -> void:
     result.sort_custom(sort_ascending)
     
     for target in result:
-        print(target)
         if not target.collider.has_method("hit"): continue
         if target.collider.hit(query.position, target.rid): break
 
 
-func sort_ascending(a, b):
-    if a.collider.owner.position.y > b.collider.owner.position.y:
-        return true
-    return false
+func sort_ascending(a, b): return a.collider.owner.position.y > b.collider.owner.position.y

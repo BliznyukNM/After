@@ -11,6 +11,8 @@ size = Vector2(36, 53.5)
 size = Vector2(36, 11)
 
 [node name="Zombie" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_1nrgn")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
@@ -22,6 +24,8 @@ animation = &"die"
 autoplay = "idle"
 
 [node name="HitBox" type="Area2D" parent="Body"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_pxn8t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitBox"]
@@ -32,3 +36,10 @@ debug_color = Color(0.7, 0.665, 0, 0.0745098)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_1i6io")
+
+[node name="VisionRay" type="RayCast2D" parent="."]
+position = Vector2(0, -51)
+target_position = Vector2(-500, 2.08165e-12)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false

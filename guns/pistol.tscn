@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://4c5odovqrvau"]
+
+[ext_resource type="Texture2D" uid="uid://bjyq8f8d5hev3" path="res://assets/guns/3_10.png" id="1_foxug"]
+
+[node name="Pistol" type="Node2D"]
+
+[node name="310" type="Sprite2D" parent="."]
+position = Vector2(-8, -7)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_foxug")
+centered = false

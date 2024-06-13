@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://tai7ooo6fidw"]
+[gd_scene load_steps=10 format=3 uid="uid://tai7ooo6fidw"]
 
 [ext_resource type="SpriteFrames" uid="uid://c6sdf6jg0dqov" path="res://assets/character/character.tres" id="1_i4flp"]
 [ext_resource type="Script" path="res://character.gd" id="1_l3ub1"]
 [ext_resource type="SpriteFrames" uid="uid://bpgoyj0tuqpyi" path="res://assets/character/front_arm.tres" id="2_vuj8s"]
 [ext_resource type="SpriteFrames" uid="uid://4pgq73oekcbx" path="res://assets/character/back_arm.tres" id="3_1vtqs"]
+[ext_resource type="PackedScene" uid="uid://4c5odovqrvau" path="res://guns/pistol.tscn" id="4_63roe"]
 [ext_resource type="Script" path="res://entrance_detector.gd" id="5_ekx8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtsy7"]
@@ -12,7 +13,12 @@ size = Vector2(33, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnyb6"]
 size = Vector2(34, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ydf4"]
+size = Vector2(48, 94)
+
 [node name="Character" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_l3ub1")
 speed = 150.0
 
@@ -26,19 +32,12 @@ position = Vector2(0, -58)
 [node name="Body" type="AnimatedSprite2D" parent="Visual"]
 scale = Vector2(2.255, 2)
 sprite_frames = ExtResource("1_i4flp")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.912789
+frame_progress = 0.895027
 
 [node name="Arms" type="Node2D" parent="Visual"]
 position = Vector2(-4, -3)
-
-[node name="FrontArm" type="AnimatedSprite2D" parent="Visual/Arms"]
-position = Vector2(4, 3)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_vuj8s")
-animation = &"idle"
 
 [node name="BackArm" type="AnimatedSprite2D" parent="Visual/Arms"]
 position = Vector2(4, 3)
@@ -46,13 +45,33 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_1vtqs")
 animation = &"idle"
 
+[node name="Pistol" parent="Visual/Arms" instance=ExtResource("4_63roe")]
+position = Vector2(41, 0)
+
+[node name="FrontArm" type="AnimatedSprite2D" parent="Visual/Arms"]
+position = Vector2(4, 3)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_vuj8s")
+animation = &"idle"
+
 [node name="EntranceDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("5_ekx8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceDetector"]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_qnyb6")
 debug_color = Color(0.81064, 0.370788, 0.476591, 0.42)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -47)
+shape = SubResource("RectangleShape2D_0ydf4")
+debug_color = Color(0.7, 0.618333, 0, 0.196078)
 
 [connection signal="area_entered" from="EntranceDetector" to="EntranceDetector" method="_on_entrance_detected"]
 [connection signal="area_exited" from="EntranceDetector" to="EntranceDetector" method="_on_entrance_lost"]
