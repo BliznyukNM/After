@@ -5,9 +5,24 @@ extends CharacterBody2D
 @export var back_speed: = 70.0
 
 
+@onready var weapon_root: = $Visual/WeaponRoot
+
+
+var carry_weapon: bool:
+    set(value):
+        carry_weapon = value
+        weapon_root.visible = value
+        Cursor.mode = 1 if value else 0
+
+
+func _ready() -> void:
+    carry_weapon = false
+    Cursor.character = self
+
+
 func _process(_delta: float) -> void:
-    var look_dir: = get_viewport().get_camera_2d().get_global_mouse_position() - global_position
-    $Visual.scale = Vector2(1 if look_dir.x >= 0 else -1, 1)
+    var look_dir: = _get_look_direction()
+    if abs(look_dir.x) > 0: $Visual.scale = Vector2(1 if look_dir.x > 0 else -1, 1)
     
     var input: = Input.get_axis("character.left", "character.right")
     
@@ -26,15 +41,23 @@ func _process(_delta: float) -> void:
                 entrance.direction < 0 and Input.is_action_just_pressed("character.down"):
             entrance.enter(self)
     
-    if Input.is_action_just_pressed("character.shoot"):
+    if Input.is_action_just_pressed("character.weapon.toggle"):
+        carry_weapon = !carry_weapon
+    
+    if carry_weapon and Input.is_action_just_pressed("character.shoot"):
         #$Visual/Arms/BackArm.play("shoot")
         #$Visual/Arms/FrontArm.play("shoot")
         
         var flare: Node2D = load("res://assets/crosshairs/flare.tscn").instantiate()
-        flare.global_position = $Crosshair.global_position
+        flare.global_position = Cursor.crosshair.global_position
         owner.add_child(flare)
         
-        shoot($Crosshair.global_position)
+        shoot(Cursor.crosshair.global_position)
+
+
+func _get_look_direction() -> Vector2:
+    return get_viewport().get_camera_2d().get_global_mouse_position() - global_position \
+        if carry_weapon else velocity
         
 
 func shoot(mouse_position: Vector2) -> void:

@@ -34,25 +34,28 @@ scale = Vector2(2.255, 2)
 sprite_frames = ExtResource("1_i4flp")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.895027
 
 [node name="Arms" type="Node2D" parent="Visual"]
 position = Vector2(-4, -3)
 
 [node name="BackArm" type="AnimatedSprite2D" parent="Visual/Arms"]
+visible = false
 position = Vector2(4, 3)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_1vtqs")
 animation = &"idle"
 
-[node name="Pistol" parent="Visual/Arms" instance=ExtResource("4_63roe")]
-position = Vector2(41, 0)
-
 [node name="FrontArm" type="AnimatedSprite2D" parent="Visual/Arms"]
+visible = false
 position = Vector2(4, 3)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_vuj8s")
 animation = &"idle"
+
+[node name="WeaponRoot" type="Node2D" parent="Visual"]
+position = Vector2(37, -3)
+
+[node name="Pistol" parent="Visual/WeaponRoot" instance=ExtResource("4_63roe")]
 
 [node name="EntranceDetector" type="Area2D" parent="."]
 collision_layer = 0

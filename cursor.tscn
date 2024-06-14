@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb5bdjutplic3"]
+
+[ext_resource type="Texture2D" uid="uid://ben48xf7cky5r" path="res://assets/crosshairs/86.png" id="1_vk6c4"]
+[ext_resource type="Script" path="res://cursor.gd" id="2_a6gpg"]
+
+[node name="Cursor" type="Node"]
+script = ExtResource("2_a6gpg")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("1_vk6c4")

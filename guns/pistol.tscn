@@ -6,6 +6,6 @@
 
 [node name="310" type="Sprite2D" parent="."]
 position = Vector2(-8, -7)
-scale = Vector2(1.25, 1.25)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_foxug")
 centered = false

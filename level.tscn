@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bpjmdg6i5yyqj"]
+[gd_scene load_steps=9 format=4 uid="uid://bpjmdg6i5yyqj"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_1i2oe"]
 [ext_resource type="TileSet" uid="uid://ck5wgs00pwjfc" path="res://assets/level/main_level.tres" id="1_ppest"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cqsjfs8jet78o" path="res://assets/level/parallax/1.png" id="4_lt75n"]
 [ext_resource type="Texture2D" uid="uid://dj5rcx4hlyddu" path="res://assets/level/parallax/2.png" id="5_uuvmt"]
 [ext_resource type="Texture2D" uid="uid://du1g8w64rulu1" path="res://assets/level/parallax/4.png" id="6_ibekt"]
-[ext_resource type="Script" path="res://crosshair.gd" id="8_eb22w"]
-[ext_resource type="PackedScene" uid="uid://ohl5x8ebk74x" path="res://zombie.tscn" id="8_jk866"]
-[ext_resource type="Texture2D" uid="uid://ben48xf7cky5r" path="res://assets/crosshairs/86.png" id="10_dkk2v"]
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -36,14 +33,8 @@ navigation_enabled = false
 [node name="Building1" parent="." instance=ExtResource("2_vyhm2")]
 position = Vector2(800, 512)
 
-[node name="ZombieBuilding1" parent="Building1/Floors/GroundFloor/Spawn" index="0" instance=ExtResource("8_jk866")]
-position = Vector2(159, -16)
-
 [node name="Building2" parent="." instance=ExtResource("3_ewc01")]
-position = Vector2(0, 512)
-
-[node name="Zombie" parent="Building2/Floors/Floor1/Spawn" index="0" instance=ExtResource("8_jk866")]
-position = Vector2(77, -10)
+position = Vector2(197, 517)
 
 [node name="Character" parent="." instance=ExtResource("2_fix8e")]
 position = Vector2(656, 562)
@@ -52,12 +43,6 @@ speed = 120.0
 [node name="Camera2D" type="Camera2D" parent="Character"]
 position = Vector2(5, -185)
 position_smoothing_enabled = true
-
-[node name="Crosshair" type="Sprite2D" parent="Character"]
-z_index = 10
-position = Vector2(95, -67)
-texture = ExtResource("10_dkk2v")
-script = ExtResource("8_eb22w")
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 z_index = -100
@@ -97,6 +82,3 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(2, 2)
 texture = ExtResource("6_ibekt")
 centered = false
-
-[editable path="Building1"]
-[editable path="Building2"]

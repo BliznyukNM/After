@@ -1,16 +1,6 @@
 extends TileMapLayer
 
 
-@export var transparent_modulation: = 0.15
-
-
-func toggle(on: bool) -> void:
-    var modulation: = modulate
-    modulation.a = 1.0 if on else transparent_modulation
-    modulate = modulation
-    collision_enabled = on
-
-
 func hit(hit_pos: Vector2, rid: RID) -> bool:
     # This abomination is basically calculating mouse position relative to atlas texture
     

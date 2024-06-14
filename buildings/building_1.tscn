@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=4 uid="uid://bvfbv5lspa2p2"]
+[gd_scene load_steps=11 format=4 uid="uid://bvfbv5lspa2p2"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_6p8v2"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_an1bs"]
 [ext_resource type="Texture2D" uid="uid://d0ja2dr3bi0go" path="res://props/trash_front.tres" id="2_om873"]
 [ext_resource type="Script" path="res://buildings/layer.gd" id="3_cdflf"]
+[ext_resource type="Shader" path="res://buildings/interior_mask.gdshader" id="4_q3ixd"]
 [ext_resource type="Script" path="res://buildings/entrance.gd" id="5_1yimt"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0r14h"]
-size = Vector2(640, 180)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ievam"]
+shader = ExtResource("4_q3ixd")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2bsmr"]
+size = Vector2(650, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhcg"]
 size = Vector2(112, 32)
@@ -23,38 +27,51 @@ script = ExtResource("1_an1bs")
 [node name="GroundFloor" type="Node2D" parent="Floors"]
 clip_children = 2
 
-[node name="Floor" type="TileMapLayer" parent="Floors/GroundFloor"]
-z_index = -3
+[node name="Interior" type="BackBufferCopy" parent="Floors/GroundFloor"]
+position = Vector2(-328, -192)
+copy_mode = 0
+rect = Rect2(2.08165e-12, 2.08165e-12, 650, 190)
+
+[node name="Floor" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
+z_index = -1
 y_sort_enabled = true
 use_parent_material = true
+position = Vector2(328, 192)
 tile_map_data = PackedByteArray("AAD2////AwAAAAcAAAD4////AwACAAUAAAD6////AwAAAAUAAAD8////AwACAAUAAAD+////AwAAAAUAAAAAAP//AwACAAUAAAACAP//AwACAAcAAAAEAP//AwACAAcAAAAGAP//AwAAAAcAAAAIAP//AwAAAAUAAAD1////AAACAAAAAAD1//7/AAACAAAAAAAKAP//AAAVAAAAAAAKAP7/AAAVAAAAAAA=")
 tile_set = ExtResource("1_6p8v2")
 script = ExtResource("3_cdflf")
 
-[node name="Spawn" type="Sprite2D" parent="Floors/GroundFloor"]
+[node name="Spawn" type="Node2D" parent="Floors/GroundFloor/Interior"]
 clip_children = 1
-texture = SubResource("PlaceholderTexture2D_0r14h")
-offset = Vector2(2.08165e-12, -102)
+position = Vector2(328, 192)
 
-[node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
+[node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
 modulate = Color(0.63, 0.63, 0.63, 1)
 z_index = -1
 y_sort_enabled = true
 use_parent_material = true
+position = Vector2(328, 192)
 tile_map_data = PackedByteArray("AAD2//3/AAADAAAAAAD4//3/AAADAAAAAAD6//3/AAADAAAAAAD8//3/AAANAAAAAAD+//3/AAADAAAAAAAAAP3/AAADAAAAAAACAP3/AAATAAAAAAAEAP3/AAADAAAAAAAGAP3/AAADAAAAAAAIAP3/AAAFAAAAAAAJAP3/AAAWAAAAAAAKAP3/AAAVAAAAAAD1//3/AAACAAAAAAA=")
 tile_set = ExtResource("1_6p8v2")
 collision_enabled = false
 script = ExtResource("3_cdflf")
 
-[node name="Props" type="TileMapLayer" parent="Floors/GroundFloor"]
+[node name="Props" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
 modulate = Color(0.631373, 0.631373, 0.631373, 1)
 z_index = -1
 y_sort_enabled = true
 use_parent_material = true
+position = Vector2(328, 192)
 tile_map_data = PackedByteArray("AAD///7/AQAtAAAAAAA=")
 tile_set = ExtResource("1_6p8v2")
 collision_enabled = false
 script = ExtResource("3_cdflf")
+
+[node name="InteriorMask" type="Sprite2D" parent="Floors/GroundFloor"]
+z_index = 1
+material = SubResource("ShaderMaterial_ievam")
+position = Vector2(0, -96)
+texture = SubResource("PlaceholderTexture2D_2bsmr")
 
 [node name="ExternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
 use_parent_material = true
