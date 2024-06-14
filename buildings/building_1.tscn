@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bvfbv5lspa2p2"]
+[gd_scene load_steps=12 format=4 uid="uid://bvfbv5lspa2p2"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_6p8v2"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_an1bs"]
@@ -7,11 +7,16 @@
 [ext_resource type="Shader" path="res://buildings/interior_mask.gdshader" id="4_q3ixd"]
 [ext_resource type="Script" path="res://buildings/entrance.gd" id="5_1yimt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ievam"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84a11"]
 shader = ExtResource("4_q3ixd")
+shader_parameter/size = Vector2(60, 30)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2bsmr"]
-size = Vector2(650, 190)
+[sub_resource type="Gradient" id="Gradient_j2u8c"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ntut0"]
+gradient = SubResource("Gradient_j2u8c")
+width = 660
+height = 190
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhcg"]
 size = Vector2(112, 32)
@@ -69,9 +74,9 @@ script = ExtResource("3_cdflf")
 
 [node name="InteriorMask" type="Sprite2D" parent="Floors/GroundFloor"]
 z_index = 1
-material = SubResource("ShaderMaterial_ievam")
+material = SubResource("ShaderMaterial_84a11")
 position = Vector2(0, -96)
-texture = SubResource("PlaceholderTexture2D_2bsmr")
+texture = SubResource("GradientTexture2D_ntut0")
 
 [node name="ExternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
 use_parent_material = true

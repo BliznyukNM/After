@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cwf1pr7d17mud"]
+[gd_scene load_steps=16 format=4 uid="uid://cwf1pr7d17mud"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_mpoi3"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_oqf73"]
@@ -9,15 +9,31 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ievam"]
 shader = ExtResource("4_nlo1p")
+shader_parameter/size = Vector2(25, 30)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p8ihu"]
-size = Vector2(270, 190)
+[sub_resource type="Gradient" id="Gradient_spi8t"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_16rdp"]
+gradient = SubResource("Gradient_spi8t")
+width = 270
+height = 190
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ais5e"]
 size = Vector2(64, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wobfq"]
 size = Vector2(48, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dq4t4"]
+shader = ExtResource("4_nlo1p")
+shader_parameter/size = Vector2(25, 30)
+
+[sub_resource type="Gradient" id="Gradient_eomw7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_is1m4"]
+gradient = SubResource("Gradient_eomw7")
+width = 270
+height = 190
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jfih"]
 size = Vector2(112, 64)
@@ -76,7 +92,7 @@ script = ExtResource("3_yuo04")
 z_index = 1
 material = SubResource("ShaderMaterial_ievam")
 position = Vector2(0, -96)
-texture = SubResource("PlaceholderTexture2D_p8ihu")
+texture = SubResource("GradientTexture2D_16rdp")
 
 [node name="ExternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
 use_parent_material = true
@@ -154,9 +170,9 @@ script = ExtResource("3_yuo04")
 
 [node name="InteriorMask" type="Sprite2D" parent="Floors/Floor1"]
 z_index = 1
-material = SubResource("ShaderMaterial_ievam")
-position = Vector2(0, -96)
-texture = SubResource("PlaceholderTexture2D_p8ihu")
+material = SubResource("ShaderMaterial_dq4t4")
+position = Vector2(0, -102)
+texture = SubResource("GradientTexture2D_is1m4")
 
 [node name="ExternalWalls" type="TileMapLayer" parent="Floors/Floor1"]
 use_parent_material = true
