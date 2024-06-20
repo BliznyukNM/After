@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ohl5x8ebk74x"]
 
-[ext_resource type="Script" path="res://zombie.gd" id="1_1nrgn"]
+[ext_resource type="Script" path="res://characters/zombie.gd" id="1_1nrgn"]
 [ext_resource type="SpriteFrames" uid="uid://dh8hm4fbwrvdp" path="res://assets/zombie/zombie.tres" id="1_l88b0"]
-[ext_resource type="Script" path="res://hit_box.gd" id="3_pxn8t"]
+[ext_resource type="Script" path="res://characters/hit_box.gd" id="3_pxn8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8bsy"]
 size = Vector2(36, 53.5)

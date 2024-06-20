@@ -12,7 +12,7 @@ var carry_weapon: bool:
     set(value):
         carry_weapon = value
         weapon_root.visible = value
-        Cursor.mode = 1 if value else 0
+        Cursor.mode = Cursor.Mode.GUN if value else Cursor.Mode.PICK
 
 
 func _ready() -> void:
