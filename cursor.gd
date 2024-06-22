@@ -26,7 +26,7 @@ var mode: Mode:
             Mode.PICK:
                 Input.set_custom_mouse_cursor(load("res://assets/cursors/hand_point.svg"))
             Mode.GUN:
-                Input.set_custom_mouse_cursor(load("res://assets/crosshairs/106.png"))
+                Input.set_custom_mouse_cursor(load("res://assets/crosshairs/106.png"), Input.CursorShape.CURSOR_ARROW, Vector2(16, 16))
                 crosshair.texture = load("res://assets/crosshairs/86.png")
 
 
