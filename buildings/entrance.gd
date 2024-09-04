@@ -10,5 +10,5 @@ extends Area2D
 
 
 func enter(node: Node2D) -> void:
-    owner.enter_floor(floor_id)
-    node.global_position = entrance_point.global_position
+	owner.enter_floor(floor_id)
+	node.global_position = entrance_point.global_position

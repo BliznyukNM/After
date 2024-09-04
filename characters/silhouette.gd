@@ -5,12 +5,12 @@ extends AnimatedSprite2D
 
 
 func _ready() -> void:
-    assert(target)
-    target.property_list_changed.connect(_on_target_properties_changed)
-    sprite_frames = target.sprite_frames
+	assert(target)
+	target.property_list_changed.connect(_on_target_properties_changed)
+	sprite_frames = target.sprite_frames
 
 
 func _on_target_properties_changed() -> void:
-    animation = target.animation
-    frame = target.frame
-    speed_scale = target.speed_scale
+	animation = target.animation
+	frame = target.frame
+	speed_scale = target.speed_scale

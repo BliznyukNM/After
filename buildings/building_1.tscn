@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://bvfbv5lspa2p2"]
+[gd_scene load_steps=13 format=4 uid="uid://bvfbv5lspa2p2"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_6p8v2"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_an1bs"]
 [ext_resource type="Texture2D" uid="uid://d0ja2dr3bi0go" path="res://props/trash_front.tres" id="2_om873"]
 [ext_resource type="Script" path="res://buildings/layer.gd" id="3_cdflf"]
+[ext_resource type="PackedScene" uid="uid://ohl5x8ebk74x" path="res://characters/zombie.tscn" id="4_66gx2"]
 [ext_resource type="Shader" path="res://buildings/interior_mask.gdshader" id="4_q3ixd"]
 [ext_resource type="Script" path="res://buildings/entrance.gd" id="5_1yimt"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_84a11"]
-shader = ExtResource("4_q3ixd")
-shader_parameter/size = Vector2(60, 30)
 
 [sub_resource type="Gradient" id="Gradient_j2u8c"]
 
@@ -17,6 +14,10 @@ shader_parameter/size = Vector2(60, 30)
 gradient = SubResource("Gradient_j2u8c")
 width = 660
 height = 190
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84a11"]
+shader = ExtResource("4_q3ixd")
+shader_parameter/size = Vector2(60, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhcg"]
 size = Vector2(112, 32)
@@ -46,9 +47,14 @@ tile_map_data = PackedByteArray("AAD2////AwAAAAcAAAD4////AwACAAUAAAD6////AwAAAAU
 tile_set = ExtResource("1_6p8v2")
 script = ExtResource("3_cdflf")
 
-[node name="Spawn" type="Node2D" parent="Floors/GroundFloor/Interior"]
+[node name="Spawn" type="Sprite2D" parent="Floors/GroundFloor/Interior"]
 clip_children = 1
 position = Vector2(328, 192)
+texture = SubResource("GradientTexture2D_ntut0")
+offset = Vector2(0, -96)
+
+[node name="Zombie" parent="Floors/GroundFloor/Interior/Spawn" instance=ExtResource("4_66gx2")]
+position = Vector2(149, -16)
 
 [node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
 modulate = Color(0.63, 0.63, 0.63, 1)
