@@ -31,12 +31,17 @@ var mode: Mode:
 
 
 func _ready() -> void:
-	_last_mouse_position = get_viewport().get_camera_2d().get_global_mouse_position()
+	var camera: = get_viewport().get_camera_2d()
+	if not camera: return
+	_last_mouse_position = camera.get_global_mouse_position()
 	mode = Mode.PICK
 
 
 func _process(delta: float) -> void:
-	var target_position: = get_viewport().get_camera_2d().get_global_mouse_position()
+	var camera: = get_viewport().get_camera_2d()
+	if not camera: return
+	
+	var target_position: = camera.get_global_mouse_position()
 	var delta_position: = (target_position - _last_mouse_position)
 	
 	if delta_position.length_squared() > 1: _mouse_movement_fatigue = min(2, _mouse_movement_fatigue + 10 * delta)

@@ -54,7 +54,7 @@ texture = SubResource("GradientTexture2D_ntut0")
 offset = Vector2(0, -96)
 
 [node name="Zombie" parent="Floors/GroundFloor/Interior/Spawn" instance=ExtResource("4_66gx2")]
-position = Vector2(149, -16)
+position = Vector2(296, -16)
 
 [node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
 modulate = Color(0.63, 0.63, 0.63, 1)

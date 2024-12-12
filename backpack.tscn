@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://c443s2mgpdjky"]
+
+[ext_resource type="Texture2D" uid="uid://bbbj55pa65f5d" path="res://assets/food/hex_bar.tres" id="1_7600v"]
+
+[sub_resource type="GDScript" id="GDScript_7qkmq"]
+script/source = "extends StaticBody2D
+
+
+func _process(delta: float) -> void:
+	$Draggable.position = get_global_mouse_position()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pp3u"]
+size = Vector2(64, 30)
+
+[node name="Backpack" type="StaticBody2D"]
+script = SubResource("GDScript_7qkmq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(330, 206, 333, 541, 669, 541, 662, 197, 627, 197, 634, 508, 365, 514, 361, 206)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(494, 135)
+
+[node name="HexBar" type="Sprite2D" parent="RigidBody2D"]
+rotation = 0.785398
+scale = Vector2(2, 2)
+texture = ExtResource("1_7600v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_4pp3u")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(473, 133)
+node_a = NodePath("../Draggable")
+node_b = NodePath("../RigidBody2D")
+
+[node name="Draggable" type="StaticBody2D" parent="."]
+position = Vector2(473, 135)
