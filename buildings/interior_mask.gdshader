@@ -5,7 +5,7 @@ uniform vec2 size;
 
 void fragment() {
     COLOR = texture(screen_texture, SCREEN_UV);
-    
+
     vec2 uv = UV;
     vec2 suv = abs(uv * 2.0 - 1.0);
     vec2 u = vec2(size * TEXTURE_PIXEL_SIZE);

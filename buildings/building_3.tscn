@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=4 uid="uid://c338gmj47glwe"]
+
+[ext_resource type="Script" uid="uid://o7gd7gu2wons" path="res://buildings/building.gd" id="1_kl7ru"]
+[ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="2_gdlkf"]
+[ext_resource type="Script" uid="uid://bsgr3py7xudv4" path="res://buildings/layer.gd" id="3_s2aug"]
+[ext_resource type="PackedScene" uid="uid://ohl5x8ebk74x" path="res://characters/zombie.tscn" id="4_6jiao"]
+[ext_resource type="Shader" uid="uid://pvoq3n761fts" path="res://buildings/interior_mask.gdshader" id="5_x3518"]
+[ext_resource type="Texture2D" uid="uid://d0ja2dr3bi0go" path="res://props/trash_front.tres" id="6_hp7pm"]
+[ext_resource type="Script" uid="uid://n0pm5tum0iyn" path="res://buildings/entrance.gd" id="7_6y6hu"]
+
+[sub_resource type="Gradient" id="Gradient_j2u8c"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ntut0"]
+gradient = SubResource("Gradient_j2u8c")
+width = 660
+height = 190
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84a11"]
+shader = ExtResource("5_x3518")
+shader_parameter/size = Vector2(60, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhcg"]
+size = Vector2(92, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opsal"]
+size = Vector2(112, 64)
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_kl7ru")
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="GroundFloor" type="Node2D" parent="Floors"]
+clip_children = 2
+
+[node name="Interior" type="BackBufferCopy" parent="Floors/GroundFloor"]
+position = Vector2(-328, -192)
+copy_mode = 0
+rect = Rect2(2.08165e-12, 2.08165e-12, 650, 190)
+
+[node name="Floor" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(328, 192)
+tile_map_data = PackedByteArray("AAD2////AwAAAAcAAAD4////AwACAAUAAAD6////AwAAAAUAAAD8////AwACAAUAAAD+////AwAAAAUAAAAAAP//AwACAAUAAAACAP//AwACAAcAAAAEAP//AwACAAcAAAAGAP//AwAAAAcAAAAIAP//AwAAAAUAAAD1////AAACAAAAAAD1//7/AAACAAAAAAAKAP//AAAVAAAAAAAKAP7/AAAVAAAAAAA=")
+tile_set = ExtResource("2_gdlkf")
+script = ExtResource("3_s2aug")
+
+[node name="Spawn" type="Sprite2D" parent="Floors/GroundFloor/Interior"]
+clip_children = 1
+position = Vector2(328, 192)
+texture = SubResource("GradientTexture2D_ntut0")
+offset = Vector2(0, -96)
+
+[node name="Zombie" parent="Floors/GroundFloor/Interior/Spawn" instance=ExtResource("4_6jiao")]
+position = Vector2(296, -16)
+
+[node name="InternalWalls" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
+modulate = Color(0.63, 0.63, 0.63, 1)
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(328, 192)
+tile_map_data = PackedByteArray("AAD2//3/AAADAAAAAAD4//3/AAADAAAAAAD6//3/AAADAAAAAAD8//3/AAANAAAAAAD+//3/AAADAAAAAAAAAP3/AAADAAAAAAACAP3/AAATAAAAAAAEAP3/AAADAAAAAAAGAP3/AAADAAAAAAAIAP3/AAAFAAAAAAAJAP3/AAAWAAAAAAAKAP3/AAAVAAAAAAD1//3/AAACAAAAAAA=")
+tile_set = ExtResource("2_gdlkf")
+collision_enabled = false
+script = ExtResource("3_s2aug")
+
+[node name="Props" type="TileMapLayer" parent="Floors/GroundFloor/Interior"]
+modulate = Color(0.631373, 0.631373, 0.631373, 1)
+z_index = -1
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(328, 192)
+tile_map_data = PackedByteArray("AAD///7/AQAtAAAAAAA=")
+tile_set = ExtResource("2_gdlkf")
+collision_enabled = false
+script = ExtResource("3_s2aug")
+
+[node name="InteriorMask" type="Sprite2D" parent="Floors/GroundFloor"]
+z_index = 1
+material = SubResource("ShaderMaterial_84a11")
+position = Vector2(0, -96)
+texture = SubResource("GradientTexture2D_ntut0")
+
+[node name="ExternalWalls" type="TileMapLayer" parent="Floors/GroundFloor"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD2////AAAAAAQAAAD3////AAADAAQAAAD5////AAAfAAAAAAD7////AAAHAAQAAAABAP//AAARAAQAAAADAP//AAAGAAQAAAAEAP//AAAFAAQAAAAFAP//AAADAAQAAAAHAP//AAATAAQAAAAJAP//AAAGAAQAAAAKAP//AAAlAAUAAAA=")
+tile_set = ExtResource("2_gdlkf")
+collision_visibility_mode = 2
+script = ExtResource("3_s2aug")
+
+[node name="Roof" type="TileMapLayer" parent="Floors/GroundFloor"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD1//r/AgAWAAcAAAD1//v/AgAXAAMAAAD2//r/AgAUAAIAAAD2//v/AgAUAAMAAAD3//r/AgAUAAIAAAD3//v/AgAWAAMAAAD4//r/AgAWAAIAAAD4//v/AgAVAAMAAAD5//r/AgAXAAIAAAD5//v/AgAWAAMAAAD6//v/AgAVAAMAAAABAPr/AgAXAAIAAAABAPv/AgAUAAMAAAACAPr/AgAVAAIAAAACAPv/AgAVAAMAAAADAPr/AgAXAAIAAAADAPv/AgAUAAMAAAAEAPr/AgAVAAIAAAAEAPv/AgAWAAMAAAAFAPr/AgAVAAcAAAAFAPv/AgAXAAMAAAAGAPr/AgAXAAcAAAAGAPv/AgAXAAMAAAAHAPr/AgAWAAcAAAAHAPv/AgAWAAMAAAAIAPv/AgAXAAMAAAAJAPv/AgAUAAMAAAAKAPv/AgAVAAMAAAAKAPr/AgAUAAIAAAA=")
+tile_set = ExtResource("2_gdlkf")
+collision_enabled = false
+script = ExtResource("3_s2aug")
+
+[node name="TrashFront" type="Sprite2D" parent="Floors/GroundFloor"]
+position = Vector2(-32, 0)
+texture = ExtResource("6_hp7pm")
+
+[node name="Exit" type="Area2D" parent="Floors/GroundFloor"]
+position = Vector2(-192, -24)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_6y6hu")
+direction = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/GroundFloor/Exit"]
+shape = SubResource("RectangleShape2D_1bhcg")
+
+[node name="EntrancePoint" type="Node2D" parent="Floors/GroundFloor/Exit"]
+position = Vector2(0, 80)
+
+[node name="Entrance" type="Area2D" parent="."]
+position = Vector2(-192, 32)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_6y6hu")
+direction = 1
+floor_id = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance"]
+shape = SubResource("RectangleShape2D_opsal")
+
+[node name="EntrancePoint" type="Node2D" parent="Entrance"]
+position = Vector2(0, -48)

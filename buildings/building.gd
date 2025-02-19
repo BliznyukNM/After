@@ -4,7 +4,10 @@ extends Node2D
 @onready var floors: = $Floors
 
 
-func _ready() -> void: enter_floor(-1)
+const FLOOR_OUTSIDE: = -1
+
+
+func _ready() -> void: enter_floor(FLOOR_OUTSIDE)
 
 
 func enter_floor(floor_number: int) -> void:

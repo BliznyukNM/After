@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=4 uid="uid://cwf1pr7d17mud"]
 
 [ext_resource type="TileSet" uid="uid://dpn4tgby11xnx" path="res://assets/level/buildings.tres" id="1_mpoi3"]
-[ext_resource type="Script" path="res://buildings/building.gd" id="1_oqf73"]
+[ext_resource type="Script" uid="uid://o7gd7gu2wons" path="res://buildings/building.gd" id="1_oqf73"]
 [ext_resource type="Texture2D" uid="uid://lfflqgiaqjld" path="res://props/trash_left.tres" id="2_evwq2"]
-[ext_resource type="Script" path="res://buildings/entrance.gd" id="3_axw3e"]
-[ext_resource type="Script" path="res://buildings/layer.gd" id="3_yuo04"]
-[ext_resource type="Shader" path="res://buildings/interior_mask.gdshader" id="4_nlo1p"]
+[ext_resource type="Script" uid="uid://n0pm5tum0iyn" path="res://buildings/entrance.gd" id="3_axw3e"]
+[ext_resource type="Script" uid="uid://bsgr3py7xudv4" path="res://buildings/layer.gd" id="3_yuo04"]
+[ext_resource type="Shader" uid="uid://pvoq3n761fts" path="res://buildings/interior_mask.gdshader" id="4_nlo1p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ievam"]
 shader = ExtResource("4_nlo1p")
