@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bpjmdg6i5yyqj"]
+[gd_scene load_steps=10 format=4 uid="uid://bpjmdg6i5yyqj"]
 
 [ext_resource type="Script" uid="uid://el5bxxkw60yk" path="res://level.gd" id="1_1i2oe"]
 [ext_resource type="TileSet" uid="uid://ck5wgs00pwjfc" path="res://assets/level/main_level.tres" id="1_ppest"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cwf1pr7d17mud" path="res://buildings/building_2.tscn" id="3_ewc01"]
 [ext_resource type="Texture2D" uid="uid://cqsjfs8jet78o" path="res://assets/level/parallax/1.png" id="4_lt75n"]
 [ext_resource type="Texture2D" uid="uid://dj5rcx4hlyddu" path="res://assets/level/parallax/2.png" id="5_uuvmt"]
+[ext_resource type="Script" uid="uid://4co0tlfftafq" path="res://camera.gd" id="6_i2t4f"]
 [ext_resource type="Texture2D" uid="uid://du1g8w64rulu1" path="res://assets/level/parallax/4.png" id="6_ibekt"]
 
 [node name="Level" type="Node2D"]
@@ -40,9 +41,14 @@ position = Vector2(197, 517)
 position = Vector2(656, 562)
 speed = 120.0
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
-position = Vector2(5, -185)
-position_smoothing_enabled = true
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(656, 412)
+offset = Vector2(0, -100)
+limit_bottom = 780
+limit_smoothed = true
+position_smoothing_speed = 30.0
+script = ExtResource("6_i2t4f")
+target = NodePath("../Character")
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 z_index = -100

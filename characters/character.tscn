@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://tai7ooo6fidw"]
 
 [ext_resource type="SpriteFrames" uid="uid://c6sdf6jg0dqov" path="res://assets/character/character.tres" id="1_i4flp"]
-[ext_resource type="Script" path="res://characters/character.gd" id="1_l3ub1"]
+[ext_resource type="Script" uid="uid://bpvcm70fblc68" path="res://characters/character.gd" id="1_l3ub1"]
 [ext_resource type="PackedScene" uid="uid://4c5odovqrvau" path="res://guns/pistol.tscn" id="4_63roe"]
-[ext_resource type="Script" path="res://characters/entrance_detector.gd" id="5_ekx8b"]
+[ext_resource type="Script" uid="uid://l4mhrj6vfy0y" path="res://characters/entrance_detector.gd" id="5_ekx8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtsy7"]
 size = Vector2(33, 21)

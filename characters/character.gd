@@ -56,8 +56,7 @@ func _process(_delta: float) -> void:
 
 
 func _get_look_direction() -> Vector2:
-	return get_viewport().get_camera_2d().get_global_mouse_position() - global_position \
-		if carry_weapon else velocity
+	return get_viewport().get_camera_2d().get_global_mouse_position() - global_position
 		
 
 func shoot(mouse_position: Vector2) -> void:
