@@ -20,7 +20,7 @@ func enter_room(floor_id: String, room_id: String) -> void:
 			var exact_room: = exact_floor and room_id == room.name
 			var interior: BackBufferCopy = room.get_node("Interior")
 			interior.copy_mode = BackBufferCopy.CopyMode.COPY_MODE_DISABLED if not exact_room else BackBufferCopy.CopyMode.COPY_MODE_VIEWPORT
-			interior.get_node("Floor").z_index = 0 if not exact_floor or floor_index > 0 else -1
+			interior.get_node("Floor").z_index = 0 if not exact_floor or floor_index > 0 else -1 # weird bug prevention
 			room.get_node("InteriorMask").visible = exact_room
 			room.get_node("ExternalWalls").collision_enabled = not exact_floor
 			#proom.z_index = 0 if exact_room else -2
