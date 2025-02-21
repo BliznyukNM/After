@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bpjmdg6i5yyqj"]
+[gd_scene load_steps=9 format=4 uid="uid://bpjmdg6i5yyqj"]
 
 [ext_resource type="Script" uid="uid://el5bxxkw60yk" path="res://level.gd" id="1_1i2oe"]
 [ext_resource type="TileSet" uid="uid://ck5wgs00pwjfc" path="res://assets/level/main_level.tres" id="1_ppest"]
 [ext_resource type="PackedScene" uid="uid://tai7ooo6fidw" path="res://characters/character.tscn" id="2_fix8e"]
-[ext_resource type="PackedScene" uid="uid://bvfbv5lspa2p2" path="res://buildings/building_1.tscn" id="2_vyhm2"]
-[ext_resource type="PackedScene" uid="uid://cwf1pr7d17mud" path="res://buildings/building_2.tscn" id="3_ewc01"]
 [ext_resource type="Texture2D" uid="uid://cqsjfs8jet78o" path="res://assets/level/parallax/1.png" id="4_lt75n"]
+[ext_resource type="PackedScene" uid="uid://c338gmj47glwe" path="res://buildings/building_3.tscn" id="5_8cye3"]
 [ext_resource type="Texture2D" uid="uid://dj5rcx4hlyddu" path="res://assets/level/parallax/2.png" id="5_uuvmt"]
 [ext_resource type="Script" uid="uid://4co0tlfftafq" path="res://camera.gd" id="6_i2t4f"]
 [ext_resource type="Texture2D" uid="uid://du1g8w64rulu1" path="res://assets/level/parallax/4.png" id="6_ibekt"]
@@ -31,18 +30,16 @@ tile_map_data = PackedByteArray("AAAaABAAAQAYACAAAAAbABAAAQAUACEAAAAUABMAAQAUACE
 tile_set = ExtResource("1_ppest")
 navigation_enabled = false
 
-[node name="Building1" parent="." instance=ExtResource("2_vyhm2")]
-position = Vector2(800, 512)
-
-[node name="Building2" parent="." instance=ExtResource("3_ewc01")]
-position = Vector2(197, 517)
+[node name="Building3" parent="." instance=ExtResource("5_8cye3")]
+position = Vector2(508, 519)
 
 [node name="Character" parent="." instance=ExtResource("2_fix8e")]
-position = Vector2(656, 562)
+position = Vector2(500, 562)
 speed = 120.0
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(656, 412)
+process_mode = 4
+position = Vector2(478, 468)
 offset = Vector2(0, -100)
 limit_bottom = 780
 limit_smoothed = true
