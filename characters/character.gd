@@ -33,7 +33,8 @@ func _process(_delta: float) -> void:
 	
 	var is_going_forward = input >= 0 and look_dir.x >= 0 or input < 0 and look_dir.x < 0
 	velocity = Vector2.RIGHT * input * (speed if is_going_forward else back_speed)
-	move_and_slide()
+	if move_and_slide():
+		print(get_last_slide_collision().get_collider().get_parent().name)
 	
 	var entrance = $EntranceDetector.entrance
 	if entrance and "direction" in entrance:

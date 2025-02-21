@@ -38,7 +38,7 @@ position = Vector2(500, 562)
 speed = 120.0
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(478, 468)
+position = Vector2(478, 438)
 offset = Vector2(0, -100)
 limit_bottom = 780
 limit_smoothed = true
