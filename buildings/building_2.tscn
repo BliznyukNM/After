@@ -126,7 +126,6 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = 1
-floor_id = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/GroundFloor/Ladder"]
 position = Vector2(0, -4)
@@ -193,7 +192,6 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = -1
-floor_id = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor1/Ladder"]
 position = Vector2(0, -4)
@@ -212,7 +210,6 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_axw3e")
 direction = 1
-floor_id = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance"]
 shape = SubResource("RectangleShape2D_1jfih")
